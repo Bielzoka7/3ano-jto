@@ -1,0 +1,710 @@
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>3° Ano A - JTO</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      background:#4a0d16;
+      font-family:'Poppins',sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    .hero{
+      width:100vw;
+      height:100vh;
+      position:relative;
+      overflow:hidden;
+
+      background-image:
+      linear-gradient(rgba(30,0,0,.35), rgba(30,0,0,.35)),
+      url("https://i.ibb.co/SwG4vRnW/3-ano-foto-fundo-jpg.png");
+
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+
+      transition:background-position .15s linear;
+    }
+
+    .overlay{
+      position:absolute;
+      inset:0;
+      padding:50px;
+      color:white;
+    }
+
+    .top-info{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      margin-bottom:40px;
+    }
+
+    .top-left{
+      display:flex;
+      gap:90px;
+    }
+
+    .mini-title{
+      font-size:15px;
+      opacity:.9;
+      margin-bottom:8px;
+    }
+
+    .mini-text{
+      font-size:24px;
+      font-family:'Cormorant Garamond',serif;
+    }
+
+    .top-right{
+      font-size:14px;
+      opacity:.9;
+    }
+
+    .school{
+      margin-top:150px;
+      font-size:25px;
+      font-family:'Cormorant Garamond',serif;
+      font-weight:600;
+    }
+
+    .main-title{
+      margin-top:10px;
+      line-height:0.9;
+      font-family:'Cormorant Garamond',serif;
+      position:relative;
+z-index:5;
+    }
+
+    .main-title h1{
+      font-size:120px;
+      font-weight:400;
+      display:flex;
+      align-items:center;
+      gap:25px;
+    }
+
+    .main-title span{
+      font-style:italic;
+      font-weight:300;
+    }
+
+    .description{
+      margin-top:35px;
+      max-width:700px;
+      font-size:20px;
+      line-height:1.4;
+      color:#f1f1f1;
+      font-family:'Cormorant Garamond',serif;
+      
+      position:relative;
+z-index:5;
+    }
+
+    .btn{
+      text-decoration:none;
+      color:white;
+      border:2px solid rgba(255,255,255,.95);
+      background:rgba(255,255,255,.08);
+
+box-shadow:
+0 0 20px rgba(255,255,255,.12);
+      padding:18px 55px;
+      border-radius:60px;
+      font-size:24px;
+      font-family:'Cormorant Garamond',serif;
+      backdrop-filter:blur(4px);
+      transition:.3s;
+      
+    }
+
+   .buttons{
+  position:absolute;
+  right:60px;
+  bottom:60px;
+
+  display:flex;
+  gap:20px;
+
+  z-index:5;
+}
+
+    .secondary{
+      background:rgba(255,255,255,.08);
+    }
+
+    .btn:hover{
+      background:white;
+      color:#6b0000;
+      transform:scale(1.05);
+    }
+
+    /* NOVAS SEÇÕES */
+
+    .section{
+      min-height:100vh;
+      background:#4a0d16;
+      color:white;
+
+      padding:80px 50px;
+    }
+
+    .section-title{
+      font-size:70px;
+      font-family:'Cormorant Garamond',serif;
+
+      margin-bottom:50px;
+    }
+
+    @media(max-width:900px){
+
+      .overlay{
+        padding:25px;
+      }
+
+      .top-left{
+        gap:25px;
+        flex-direction:column;
+      }
+
+      .school{
+        margin-top:100px;
+        font-size:18px;
+      }
+
+      .main-title h1{
+        font-size:65px;
+      }
+
+      .description{
+        font-size:18px;
+        max-width:90%;
+      }
+
+      .btn{
+        padding:14px 35px;
+        font-size:20px;
+      }
+
+      .buttons{
+        right:25px;
+        bottom:30px;
+        flex-direction:column;
+      }
+
+      .section-title{
+        font-size:45px;
+      }
+
+    }
+
+    .schedule-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:30px;
+}
+
+.day-card{
+  background:rgba(255,255,255,.05);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  border-radius:30px;
+
+  padding:35px;
+
+  backdrop-filter:blur(10px);
+
+  box-shadow:
+  0 10px 40px rgba(0,0,0,.25);
+}
+
+.day-card h3{
+  font-size:38px;
+  font-family:'Cormorant Garamond',serif;
+
+  margin-bottom:30px;
+}
+
+.class-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:14px 0;
+
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.class-item span{
+  opacity:.85;
+
+  font-size:22px;
+
+  font-family:'Cormorant Garamond',serif;
+
+  font-weight:500;
+}
+
+.class-item p{
+  font-size:28px;
+
+  font-family:'Cormorant Garamond',serif;
+
+  font-weight:500;
+}
+
+.break{
+  margin:22px 0;
+
+  padding:18px;
+
+  text-align:center;
+
+  border-radius:16px;
+
+  background:rgba(255,255,255,.06);
+
+  font-size:24px;
+
+  font-family:'Cormorant Garamond',serif;
+
+  font-weight:500;
+
+  opacity:.9;
+}
+    
+  </style>
+</head>
+
+<body>
+
+  <section class="hero">
+
+    <div class="overlay">
+
+      <div class="top-info">
+
+        <div class="top-left">
+
+          <div>
+            <div class="mini-title">Site do 3° ano da JTO/2026</div>
+            <div class="mini-text">Total de 27 Alunos!!</div>
+          </div>
+
+          <div>
+            <div class="mini-title">Horário de aula</div>
+            <div class="mini-text">13:00 - 17:00</div>
+          </div>
+
+        </div>
+
+        <div class="top-right">
+          3° Ano - 2026©
+        </div>
+
+      </div>
+
+      <div class="school">
+        Cel. Jorge Teixeira De Oliveira
+      </div>
+
+      <div class="main-title">
+        <h1>
+          3° ano <span>A</span>
+        </h1>
+      </div>
+
+      <div class="description">
+       O tempo Voa, E não há tempo que volte.
+      </div>
+      
+
+      <div class="buttons">
+
+        <a href="#horarios" class="btn secondary">
+           Horários
+        </a>
+
+        <a href="#alunos" class="btn">
+           Alunos / Professores
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SEÇÃO HORÁRIOS -->
+
+  <section id="horarios" class="section">
+
+  <h2 class="section-title">
+    Horários das Aulas
+  </h2>
+
+  <div class="schedule-grid">
+
+    <div class="day-card">
+      <h3>Segunda-feira</h3>
+
+      <div class="class-item">
+        <span>13:00</span>
+        <p>Português</p>
+      </div>
+
+      <div class="class-item">
+        <span>13:45</span>
+        <p>Português</p>
+      </div>
+
+      <div class="class-item">
+        <span>14:30</span>
+        <p>Trilhas</p>
+      </div>
+
+      <div class="break">
+        Intervalo • 15:15
+      </div>
+
+      <div class="class-item">
+        <span>15:30</span>
+        <p>Sociologia</p>
+      </div>
+
+      <div class="class-item">
+        <span>16:15</span>
+        <p>História</p>
+      </div>
+      </div>
+<div class="day-card">
+  <h3>Terça-feira</h3>
+
+  <div class="class-item">
+    <span>13:00</span>
+    <p>Biologia</p>
+  </div>
+
+  <div class="class-item">
+    <span>13:45</span>
+    <p>Biologia</p>
+  </div>
+
+  <div class="class-item">
+    <span>14:30</span>
+    <p>Matemática</p>
+  </div>
+
+  <div class="break">
+    Intervalo • 15:15
+  </div>
+
+  <div class="class-item">
+    <span>15:30</span>
+    <p>Matemática</p>
+  </div>
+
+  <div class="class-item">
+    <span>16:15</span>
+    <p>Física</p>
+  </div>
+</div>
+
+<div class="day-card">
+  <h3>Quarta-feira</h3>
+
+  <div class="class-item">
+    <span>13:00</span>
+    <p>Química</p>
+  </div>
+
+  <div class="class-item">
+    <span>13:45</span>
+    <p>Química</p>
+  </div>
+
+  <div class="class-item">
+    <span>14:30</span>
+    <p>Trilhas</p>
+  </div>
+
+  <div class="break">
+    Intervalo • 15:15
+  </div>
+
+  <div class="class-item">
+    <span>15:30</span>
+    <p>Trilhas</p>
+  </div>
+
+  <div class="class-item">
+    <span>16:15</span>
+    <p>Física</p>
+  </div>
+</div>
+
+<div class="day-card">
+  <h3>Quinta-feira</h3>
+
+  <div class="class-item">
+    <span>13:00</span>
+    <p>Matemática</p>
+  </div>
+
+  <div class="class-item">
+    <span>13:45</span>
+    <p>Inglês</p>
+  </div>
+
+  <div class="class-item">
+    <span>14:30</span>
+    <p>Filosofia</p>
+  </div>
+
+  <div class="break">
+    Intervalo • 15:15
+  </div>
+
+  <div class="class-item">
+    <span>15:30</span>
+    <p>Português</p>
+  </div>
+
+  <div class="class-item">
+    <span>16:15</span>
+    <p>Educação Física</p>
+  </div>
+</div>
+
+<div class="day-card">
+  <h3>Sexta-feira</h3>
+
+  <div class="class-item">
+    <span>13:00</span>
+    <p>Geografia</p>
+  </div>
+
+  <div class="class-item">
+    <span>13:45</span>
+    <p>Geografia</p>
+  </div>
+
+  <div class="class-item">
+    <span>14:30</span>
+    <p>História</p>
+  </div>
+
+  <div class="break">
+    Intervalo • 15:15
+  </div>
+
+  <div class="class-item">
+    <span>15:30</span>
+    <p>Projeto de Vida</p>
+  </div>
+
+  <div class="class-item">
+    <span>16:15</span>
+    <p>Artes</p>
+  </div>
+</div>
+    </div>
+
+  </div>
+
+</section>
+
+  <!-- SEÇÃO ALUNOS -->
+
+<section id="alunos" class="section">
+
+  <h2 class="section-title">
+    Professores :
+  </h2>
+
+  <div class="students-grid">
+  
+<div class="student-card">
+
+  <h3 class="professor-nome">Adriana</h3>
+
+  <p class="professor-materias">
+    <span class="rosa">Sociologia</span>,
+    <span class="trilhas-vermelho">Trilhas</span>,
+    <span class="rosa">Inglês</span>,
+    <span class="rosa">Filosofia</span> e
+    <span class="rosa">Artes</span>
+  </p>
+
+</div>
+
+<div class="student-card">
+
+  <h3 class="professor-nome">Eudilene</h3>
+
+  <p class="professor-materias">
+    <span class="laranja">Língua Portuguesa</span>
+  </p>
+
+</div>
+
+<div class="student-card">
+
+  <h3 class="professor-nome">Ivany</h3>
+
+  <p class="professor-materias">
+    <span class="verde">Biologia</span>,
+    <span class="trilhas-vermelho">Trilhas</span>,
+    <span class="verde">Química</span> e
+    <span class="verde">Projeto de Vida</span>
+  </p>
+
+</div>
+
+<div class="student-card">
+
+  <h3 class="professor-nome">Joabe</h3>
+
+  <p class="professor-materias">
+    <span class="roxo">Matemática</span> e
+    <span class="roxo">Física</span>
+  </p>
+
+</div>
+
+<div class="student-card">
+
+  <h3 class="professor-nome">Sergio</h3>
+
+  <p class="professor-materias">
+    <span class="azul">Geografia</span> e
+    <span class="azul">História</span>
+  </p>
+
+  </div>
+
+  <h2 class="section-title alunos-title">
+    Alunos :
+  </h2>
+
+  <div class="students-grid">
+    
+    <div class="student-card">
+  <h3>Alan</h3>
+</div>
+
+<div class="student-card">
+  <h3>Daiane Aparecida</h3>
+</div>
+
+<div class="student-card">
+  <h3>Danilo Silva</h3>
+</div>
+
+<div class="student-card">
+  <h3>Dyan Lucas</h3>
+</div>
+
+<div class="student-card">
+  <h3>Edgar Nunes</h3>
+</div>
+
+<div class="student-card">
+  <h3>Emilly Tauani</h3>
+</div>
+
+<div class="student-card">
+  <h3>Evilyyn Hauana</h3>
+</div>
+
+<div class="student-card">
+  <h3>Fellipe Pereira</h3>
+</div>
+
+<div class="student-card">
+  <h3>Guilherme Fernando</h3>
+</div>
+
+<div class="amarelo">Heloíza Cordeiro</h3>
+</div>
+
+<div class="student-card">
+  <h3>Jhonatas d. Oliveira</h3>
+</div>
+
+<div class="student-card">
+  <h3>Karla Schimith</h3>
+</div>
+
+<div class="student-card">
+  <h3>Leticiane Monteiro</h3>
+</div>
+
+<div class="student-card">
+  <h3>Lorrayne Marinho</h3>
+</div>
+
+<div class="student-card">
+  <h3>Lucas Emanoel</h3>
+</div>
+
+<div class="amarelo">Ludmila d. Anjos</h3>
+</div>
+
+<div class="student-card">
+  <h3>Luiz Alexandre</h3>
+</div>
+
+<div class="student-card">
+  <h3>Matheus Damazio</h3>
+</div>
+
+<div class="student-card">
+  <h3>Matheus Henrique</h3>
+</div>
+
+<div class="student-card">
+  <h3>Mikaelly Souza</h3>
+</div>
+
+<div class="student-card">
+  <h3>Nathan d. Silva</h3>
+</div>
+
+<div class="student-card">
+  <h3>Polyana Silva</h3>
+</div>
+
+<div class="student-card">
+  <h3>Rhenan Krauze</h3>
+</div>
+
+<div class="verde-aluno">Vitor Gabriel</h3>
+</div>
+
+<div class="student-card">
+  <h3>Vitória Ribeiro</h3>
+</div>
+
+<div class="student-card">
+  <h3>Vitória Vidal</h3>
+</div>
+
+<div class="student-card">
+  <h3>Wesley Emanuel</h3>
+</div>
+    
+</div>
+  </section>
+
