@@ -342,7 +342,29 @@ box-shadow:
     .foto-evento{
   cursor:pointer;
 }
-  
+
+    #lightbox{
+  display:none;
+
+  position:fixed;
+  inset:0;
+
+  background:rgba(0,0,0,.85);
+
+  justify-content:center;
+  align-items:center;
+
+  z-index:9999;
+}
+
+#lightbox img{
+  max-width:90%;
+  max-height:90%;
+
+  border-radius:12px;
+
+  box-shadow:0 0 50px rgba(0,0,0,.5);
+}
   </style>
 </head>
 
@@ -593,9 +615,13 @@ box-shadow:
   </h2>
 
 <div class="galeria-eventos">
-  <a href="evento1.png.png" target="_blank">
-    <img src="evento1.png.png" class="foto-evento foto1">
-  </a>
+
+  <img
+    src="evento1.png.png"
+    class="foto-evento foto1"
+    onclick="abrirFoto(this.src)"
+  >
+
 </div>
 
   <div class="students-grid">
@@ -776,6 +802,21 @@ box-shadow:
 </div>
   </section>
 
+  <div id="lightbox" onclick="fecharFoto()">
+
+  <img id="foto-ampliada">
+
+</div>
+  <script>
+function abrirFoto(src){
+  document.getElementById("lightbox").style.display = "flex";
+  document.getElementById("foto-ampliada").src = src;
+}
+
+function fecharFoto(){
+  document.getElementById("lightbox").style.display = "none";
+}
+</script>
   </body>
 </html>
 
